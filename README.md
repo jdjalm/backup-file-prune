@@ -13,10 +13,13 @@ This script was borne from the need to keep track of network device configuratio
 This script will search for all files in the provided directory, or in the current working directory if none is specified. It will attempt to identify the device hostname of the configuration file by reading all characters **_before the first underscore_** and will create a list of all files for each device in order of file creation. Example filename formats that work:
 
 ```
+co-access-switch-02
 hq-edgefirewall_config_07-04-2022T23:50:00.xml
-ca-corerouter-01.netmgmt.mydomain.tld_backup_03-22-2023T23:50:00.txt
-ny-accessrouter-02.mydomain.tld
+ca-corerouter-01.netmgmt.mydomain.tld_backup_02-01-2023T23:50:00.txt
+ny-dist-sw-02.mydomain.tld_03-22-2023T23:59:00
 ```
+
+These filenames are valid because they are named so that the identifying hostname comes first and has an underscore immediately following the device name if any date or time data is included as well.
 
 For each device, the oldest file in the list is never pruned and is considered the starting configuration. Each file older than that is compared against the one that came before and pruned if no changes were made.
 
